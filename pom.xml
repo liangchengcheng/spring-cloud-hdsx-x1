@@ -16,6 +16,8 @@
         <module>web-service-user</module>
         <module>web-service-product</module>
         <module>web-service-redis</module>
+        <module>web-service-order</module>
+        <module>web-service-order-server</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

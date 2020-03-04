@@ -3,7 +3,7 @@ package com.hdsx.webservice.product.api.hystrix;
 import com.hdsx.webservice.common.config.bean.Result;
 import com.hdsx.webservice.common.config.bean.ResultCode;
 import com.hdsx.webservice.common.config.bean.ResultUtil;
-import com.hdsx.webservice.product.api.ProductApi;
+import com.hdsx.webservice.product.api.ProductServiceApi;
 import com.hdsx.webservice.product.bean.ProductInfoBean;
 import com.hdsx.webservice.product.bean.ProductNumBean;
 import org.springframework.stereotype.Component;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * 推荐定义具体错误信息
  */
 @Component
-public class ProductServiceHystrix implements ProductApi {
+public class ProductServiceServiceHystrix implements ProductServiceApi {
 
     @Override
     public Result InsertOrUpdateProduct(ProductInfoBean productInfoBean) {

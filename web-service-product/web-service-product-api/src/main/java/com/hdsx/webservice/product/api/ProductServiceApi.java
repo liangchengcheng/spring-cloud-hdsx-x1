@@ -1,7 +1,7 @@
 package com.hdsx.webservice.product.api;
 
 import com.hdsx.webservice.common.config.bean.Result;
-import com.hdsx.webservice.product.api.hystrix.ProductServiceHystrix;
+import com.hdsx.webservice.product.api.hystrix.ProductServiceServiceHystrix;
 import com.hdsx.webservice.product.bean.ProductInfoBean;
 import com.hdsx.webservice.product.bean.ProductNumBean;
 import io.swagger.annotations.ApiOperation;
@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@FeignClient(value = "web-service-product-server",path = "/prodcutservice",fallback = ProductServiceHystrix.class)
-public interface ProductApi {
+@FeignClient(value = "web-service-product-server",path = "/prodcutservice",fallback = ProductServiceServiceHystrix.class)
+public interface ProductServiceApi {
 
     /**
      * 商品基本信息 + 商品图片信息
