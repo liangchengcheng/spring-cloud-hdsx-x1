@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hdsx.webservice.product.dao.SupervisionZHBModifyMapper">
+    <select id="searchSupervisionZHBQDN" parameterType="java.lang.String" resultType="java.lang.String">
+        select id from tb_wtdc_bj_qdn where qdnid = #{qdnid}
+    </select>
+
+    <insert id="addSupervisionZHBQDNModify" parameterType="com.hdsx.webservice.product.bean.specialsupervision.qdn.request.SupervisionZHBQDNModifyRequest">
+        insert into tb_wtdc_bj_qdn (id,qdnid,wtjs,checkstate,checktime,checkerid,checkremark,sfdxal)
+          values (#{id},#{qdnid},#{wtjs},#{checkstate},now(),#{checkerid},#{checkremark},#{sfdxal})
+    </insert>
+
+    <update id="updateSupervisionZHBQDNModify" parameterType="com.hdsx.webservice.product.bean.specialsupervision.qdn.request.SupervisionZHBQDNModifyRequest">
+        update tb_wtdc_bj_qdn
+          set
+              <if test="qdnid != null and qdnid != ''">
+                  qdnid = #{qdnid},
+              </if>
+              <if test="wtjs != null">
+                  wtjs = #{wtjs},
+              </if>
+              <if test="checkstate != null">
+                  checkstate = #{checkstate},
+              </if>
+              <if test="checkerid != null and checkerid !=''">
+                  checkerid = #{checkerid},
+              </if>
+              <if test="sfdxal != null">
+                  sfdxal = #{sfdxal},
+              </if>
+              <if test="checkremark != null and checkremark != ''">
+                  checkremark = #{checkremark},
+              </if>
+              checktime = now()
+        where id = #{id}
+    </update>
+
+    <select id="searchSupervisionZHBQDW" parameterType="java.lang.String" resultType="java.lang.String">
+        select id from tb_wtdc_bj_qdw where qdwid = #{qdwid}
+    </select>
+
+    <insert id="addSupervisionZHBQDWModify" parameterType="com.hdsx.webservice.product.bean.specialsupervision.qdw.request.SupervisionZHBQDWModifyRequest">
+        insert into tb_wtdc_bj_qdw (id,qdwid,wtjs,checkstate,checktime,checkerid,checkremark,sfdxal)
+          values (#{id},#{qdwid},#{wtjs},#{checkstate},now(),#{checkerid},#{checkremark},#{sfdxal})
+    </insert>
+
+    <update id="updateSupervisionZHBQDWModify" parameterType="com.hdsx.webservice.product.bean.specialsupervision.qdw.request.SupervisionZHBQDWModifyRequest">
+        update tb_wtdc_bj_qdw
+            set
+            <if test="qdwid != null and qdwid != ''">
+                qdwid = #{qdwid},
+            </if>
+            <if test="wtjs != null">
+                wtjs = #{wtjs},
+            </if>
+            <if test="checkstate != null">
+                checkstate = #{checkstate},
+            </if>
+            <if test="checkerid != null and checkerid !=''">
+                checkerid = #{checkerid},
+            </if>
+            <if test="sfdxal != null">
+                sfdxal = #{sfdxal},
+            </if>
+            <if test="checkremark != null and checkremark != ''">
+                checkremark = #{checkremark},
+            </if>
+            checktime = now()
+        where id = #{id}
+    </update>
+
+</mapper>

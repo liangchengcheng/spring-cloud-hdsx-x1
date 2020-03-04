@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hdsx.webservice.multimedia.dao.ImageMapper">
+
+    <select id="searchImages" parameterType="java.lang.String" resultType="com.hdsx.webservice.multimedia.bean.image.ImageBean">
+        select * from tb_image where mapperid = #{mapperid} order by createtime
+    </select>
+
+    <select id="searchOneImage" parameterType="java.lang.String" resultType="com.hdsx.webservice.multimedia.bean.image.ImageBean">
+        select * from tb_image where id = #{imageid} order by createtime
+    </select>
+
+    <delete id="deleteImagesByMapperId" parameterType="java.lang.String">
+        delete
+        from tb_image
+        where mapperid = #{mapperid}
+    </delete>
+
+    <delete id="deleteImagesFromMapperidAndType" parameterType="Map">
+        delete
+        from tb_image
+        where mapperid = #{mapperid} and "type" = #{type}
+    </delete>
+
+    <insert id="insertOneImage" parameterType="com.hdsx.webservice.multimedia.bean.image.ImageBean">
+        insert into tb_image
+            (id, type, mapperid, createtime, imagename, imageurl)
+        values (
+                   regexp_replace('' || uuid_generate_v4(), '-', '', 'g'),
+                   #{type},
+                   #{mapperid},
+                   now(),
+                   #{imagename},
+                   #{imageurl}
+               )
+    </insert>
+
+    <!-- 批量插入生成 -->
+    <insert id="insertImagesBatch" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";">
+            insert into tb_image
+            (id, type, mapperid, createtime, imagename, imageurl)
+            values (
+            regexp_replace('' || uuid_generate_v4(), '-', '', 'g'),
+            #{item.type},
+            #{item.mapperid},
+            now(),
+            #{item.imagename},
+            #{item.imageurl}
+            )
+        </foreach>
+    </insert>
+
+</mapper>

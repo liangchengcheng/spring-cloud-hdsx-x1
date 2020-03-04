@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hdsx.webservice.multimedia.dao.FileMapper">
+
+    <select id="searchFiles" parameterType="java.lang.String"
+            resultType="com.hdsx.webservice.multimedia.bean.file.FileBean">
+        select *
+        from tb_file
+        where mapperid = #{mapperid}
+        order by createtime
+    </select>
+
+    <select id="searchOneFile" parameterType="java.lang.String"
+            resultType="com.hdsx.webservice.multimedia.bean.file.FileBean">
+        select *
+        from tb_file
+        where id = #{fileid}
+        order by createtime
+    </select>
+
+    <delete id="deleteFilesFromMapperid" parameterType="java.lang.String">
+        delete
+        from tb_file
+        where mapperid = #{mapperid}
+    </delete>
+
+    <insert id="insertOneFile" parameterType="com.hdsx.webservice.multimedia.bean.file.FileBean">
+        insert into tb_file
+            (id, type, mapperid, createtime, filename, fileurl)
+        values (
+                regexp_replace('' || uuid_generate_v4(), '-', '', 'g'),
+                #{type},
+                #{mapperid},
+                now(),
+                #{filename},
+                #{fileurl}
+                )
+    </insert>
+
+    <!-- 批量插入生成 -->
+    <insert id="insertFilesBatch" parameterType="java.util.List">
+        <foreach collection="list" item="item" index="index" separator=";">
+            insert into tb_file
+            (id, type, mapperid, createtime, filename, fileurl)
+            values
+            (
+            regexp_replace('' || uuid_generate_v4(), '-', '', 'g'),
+            #{item.type},
+            #{item.mapperid},
+            now(),
+            #{item.filename},
+            #{item.fileurl}
+            )
+        </foreach>
+    </insert>
+
+    <delete id="deleteFilesFromMapperidAndType" parameterType="Map">
+        delete
+        from tb_file
+        where mapperid = #{mapperid} and "type" = #{type}
+    </delete>
+
+</mapper>

@@ -1,0 +1,123 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: drink-water-system
+          predicates:
+            - Path=/drinkwater/system/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-system
+        - id: drink-water-base-modify
+          predicates:
+          - Path=/drinkwater/basemodify/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-base-modify
+        - id: drink-water-base-query
+          predicates:
+            - Path=/drinkwater/basequery/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-base-query
+        - id: drink-water-redis
+          predicates:
+            - Path=/drinkwater/redis/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-redis
+        - id: drink-water-multimedia
+          predicates:
+            - Path=/drinkwater/multimedia/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-multimedia
+        - id: drink-water-intake-query
+          predicates:
+            - Path=/drinkwater/intakequery/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-intake-query
+        - id: drink-water-intake-modify
+          predicates:
+            - Path=/drinkwater/intakemodify/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-intake-modify
+        - id: drink-water-question-query
+          predicates:
+            - Path=/drinkwater/questionquery/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-question-query
+        - id: drink-water-question-modify
+          predicates:
+            - Path=/drinkwater/questionmodify/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-question-modify
+        - id: drink-water-supervise-modify
+          predicates:
+           - Path=/drinkwater/supervisemodify/**
+          filters:
+           - StripPrefix=2
+           - SwaggerHeaderFilter
+          uri: lb://drink-water-supervise-modify
+        - id: drink-water-supervise-query
+          predicates:
+           - Path=/drinkwater/supervisequery/**
+          filters:
+           - StripPrefix=2
+           - SwaggerHeaderFilter
+          uri: lb://drink-water-supervise-query
+        - id: drink-water-boundary-query
+          predicates:
+            - Path=/drinkwater/boundaryquery/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-boundary-query
+        - id: drink-water-boundary-modify
+          predicates:
+            - Path=/drinkwater/boundarymodify/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-boundary-modify
+        - id: drink-water-interpret-modify
+          predicates:
+            - Path=/drinkwater/interpretmodify/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-interpret-modify
+        - id: drink-water-interpret-query
+          predicates:
+            - Path=/drinkwater/interpretquery/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://drink-water-interpret-query
+  application:
+    name: drink-water-gateway #给你的微服务应用起一名字
+server:
+  port: 10100
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:11900/eureka/
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

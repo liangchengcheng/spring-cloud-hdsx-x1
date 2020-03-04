@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hdsx.webservice.product.dao.TaskModifyMapper">
+
+    <delete id="deleteTaskByTeamId" >
+        delete from tb_wtdc_task_info where teamid in
+        <foreach collection="array" item="item" index="index" open="("
+                 separator="," close=")">
+            #{item}
+        </foreach>
+    </delete>
+
+    <insert id="AddTask" parameterType="com.hdsx.webservice.product.bean.task.request.TaskAddRequest">
+       INSERT INTO tb_wtdc_task_info
+        (
+          "id",
+          "dctaskid",
+          "wscid",
+          "createtime",
+          "createrid",
+          "teamid",
+          "tasktype"
+        ) VALUES (
+           #{id},
+           #{dctaskid},
+           #{wscid},
+            NOW(),
+           #{createrid},
+           #{teamid},
+           #{tasktype}
+        )
+    </insert>
+
+    <delete id="deleteAllTaskByTeamId" parameterType="java.lang.String" >
+        delete from tb_wtdc_task_info where teamid = #{teamid}
+    </delete>
+</mapper>

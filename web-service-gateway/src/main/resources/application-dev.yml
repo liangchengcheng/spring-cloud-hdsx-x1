@@ -1,0 +1,46 @@
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+        - id: web-service-user
+          predicates:
+            - Path=/hdsx/user/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://web-service-user
+        - id: web-service-product
+          predicates:
+          - Path=/hdsx/product/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://web-service-product
+        - id: web-service-media
+          predicates:
+            - Path=/hdsx/media/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://web-service-media
+        - id: web-service-redis
+          predicates:
+            - Path=/hdsx/redis/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://web-service-redis
+  application:
+    name: drink-water-gateway #给你的微服务应用起一名字
+server:
+  port: 10100
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:11900/eureka/
+logging:
+  level:
+    org.springframework.cloud.gateway: debug

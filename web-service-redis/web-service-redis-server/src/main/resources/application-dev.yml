@@ -1,0 +1,46 @@
+server:
+  port: 11600
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:11900/eureka/
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+# swagger2
+swagger2.package: com.hdsx.webservice.redis.controller
+
+spring:
+  application:
+    name: web-service-redis-server #给你的微服务应用起一名字
+  redis:
+    database: 0
+    host: 127.0.0.1
+    password:
+    timeout: 10000
+    port: 6379
+    namespace: DRINKWATER
+    jedis:
+      pool:
+        max-active: 0
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+management:
+  security:
+    basic:
+      enabled: false # spring-boot 1.5.2之后严格执行安全策略，所以需要配置这个为false
+
+debug: true
+
+ribbon:
+  ReadTimeout: 180000
+  ConnectTimeout: 120000

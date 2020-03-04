@@ -1,0 +1,73 @@
+server:
+  port: 11800
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://127.0.0.1:11900/eureka/
+feign:
+  hystrix:
+    enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 10000
+# swagger2
+swagger2.package: com.hdsx.webservice.multimedia.controller
+
+spring:
+  application:
+    name: web-service-media-server #给你的微服务应用起一名字
+  datasource:
+    url: jdbc:postgresql://192.168.0.181:5432/hdsx?charSet=utf-8
+    username: watersys
+    password: watersys
+    driver-class-name: org.postgresql.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      filters: stat,logging
+      initial-size: 8
+      min-idle: 3
+      max-active: 10
+      query-timeout: 6000
+      transaction-query-timeout: 6000
+      remove-abandoned-timeout: 1800
+      max-wait: 60000
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 300000
+      test-while-idle:  true
+      test-on-borrow: false
+      test-on-return: false
+  servlet:
+    multipart:
+      max-file-size: 50MB
+      max-request-size: 200MB
+      enabled: true
+management:
+  security:
+    basic:
+      enabled: false # spring-boot 1.5.2之后严格执行安全策略，所以需要配置这个为false
+
+mybatis:
+  mapperLocations: classpath:/mapper/*.xml
+  typeAliasesPackage: com.hdsx.drinkwater.vo
+  config-location: classpath:mybatis-config.xml
+
+debug: true
+
+drinkwater:
+  imagePath: /Users/pengyi/Desktop/watersys/image
+  filePath:  /Users/pengyi/Desktop/watersys/file
+  videoPath: /Users/pengyi/Desktop/watersys/video
+  serverl: http://localhost:10004/watersys
+  imageShowPath: /image/
+  fileShowPath:  /file/
+  videoShowPath: /video/
+  fileDownloadPath: E:\nginx-1.9.5\webapp\watersys
+
+ribbon:
+  ReadTimeout: 180000
+  ConnectTimeout: 120000
