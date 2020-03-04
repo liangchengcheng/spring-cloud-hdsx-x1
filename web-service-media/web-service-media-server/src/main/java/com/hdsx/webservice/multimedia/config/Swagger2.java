@@ -1,4 +1,4 @@
-package com.hdsx.webservice.product;
+package com.hdsx.webservice.multimedia.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,7 +21,6 @@ import java.util.List;
 public class Swagger2 {
     @Bean
     public Docket buildDocket() {
-
         /******************************增加header中的token*****************************************/
         ParameterBuilder tokenPar = new ParameterBuilder();
         List<Parameter> pars = new ArrayList<>();
@@ -32,15 +31,15 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(ApiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.hdsx.webservice.product.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.hdsx.webservice.multimedia.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .globalOperationParameters(pars);//增加header中的token
     }
     private ApiInfo ApiInfo() {
         return new ApiInfoBuilder()
-                .description("水源地web端督查信息修改服务")
-                .title("水源地督查信息修改")
+                .description("web端多媒体服务")
+                .title("多媒体服务")
                 .version("2.0")
                 .build();
     }

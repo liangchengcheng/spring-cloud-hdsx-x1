@@ -19,5 +19,4 @@ public interface ImageMapper {
 
     int deleteImagesByMapperId(String mapperid);
 
-
 }

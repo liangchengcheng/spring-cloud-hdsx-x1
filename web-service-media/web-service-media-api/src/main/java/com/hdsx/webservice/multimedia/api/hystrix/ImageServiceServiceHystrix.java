@@ -1,6 +1,6 @@
 package com.hdsx.webservice.multimedia.api.hystrix;
 
-import com.hdsx.webservice.multimedia.api.ImageApi;
+import com.hdsx.webservice.multimedia.api.ImageServiceApi;
 import com.hdsx.webservice.multimedia.bean.image.AddRequestImageBean;
 import com.hdsx.webservice.multimedia.bean.image.ImageBean;
 import org.springframework.stereotype.Component;
@@ -8,9 +8,11 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-
+/**
+ *
+ */
 @Component
-public class ImageServiceHystrix implements ImageApi {
+public class ImageServiceServiceHystrix implements ImageServiceApi {
 
     @Override
     public List<ImageBean> uploadImages(MultipartFile[] images, int imagetype) {

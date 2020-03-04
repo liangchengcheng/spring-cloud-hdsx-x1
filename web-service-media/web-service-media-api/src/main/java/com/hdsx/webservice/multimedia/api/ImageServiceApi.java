@@ -1,6 +1,6 @@
 package com.hdsx.webservice.multimedia.api;
 
-import com.hdsx.webservice.multimedia.api.hystrix.ImageServiceHystrix;
+import com.hdsx.webservice.multimedia.api.hystrix.ImageServiceServiceHystrix;
 import com.hdsx.webservice.multimedia.bean.image.AddRequestImageBean;
 import com.hdsx.webservice.multimedia.bean.image.ImageBean;
 import io.swagger.annotations.ApiImplicitParam;
@@ -16,8 +16,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
-@FeignClient(value = "drink-water-multimedia",path="/image",fallback = ImageServiceHystrix.class)
-public interface ImageApi {
+@FeignClient(value = "drink-water-multimedia",path="/image",fallback = ImageServiceServiceHystrix.class)
+public interface ImageServiceApi {
 
     @ApiOperation(value = "单图片上传接口", notes = "单图片上传接口")
     @RequestMapping(value = "/uploadOneImage", produces = {MediaType.APPLICATION_JSON_UTF8_VALUE}, consumes = MediaType.MULTIPART_FORM_DATA_VALUE, method = RequestMethod.POST)

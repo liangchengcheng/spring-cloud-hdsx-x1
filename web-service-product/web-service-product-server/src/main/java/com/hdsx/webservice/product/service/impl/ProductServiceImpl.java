@@ -3,7 +3,7 @@ package com.hdsx.webservice.product.service.impl;
 import com.hdsx.webservice.common.config.bean.Result;
 import com.hdsx.webservice.common.config.bean.ResultCode;
 import com.hdsx.webservice.common.config.bean.ResultUtil;
-import com.hdsx.webservice.multimedia.api.ImageApi;
+import com.hdsx.webservice.multimedia.api.ImageServiceApi;
 import com.hdsx.webservice.multimedia.bean.image.AddRequestImageBean;
 import com.hdsx.webservice.multimedia.bean.image.ImageBean;
 import com.hdsx.webservice.product.bean.ProductBean;
@@ -11,7 +11,6 @@ import com.hdsx.webservice.product.bean.ProductInfoBean;
 import com.hdsx.webservice.product.dao.ProductMapper;
 import com.hdsx.webservice.product.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -28,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
     private ProductMapper productMapper;
 
     @Autowired
-    private ImageApi imageApi;
+    private ImageServiceApi imageApi;
 
     @Override
     public Result InsertOrUpdateProduct(ProductInfoBean productInfoBean) {

@@ -132,8 +132,10 @@ public class ImageServiceImpl implements ImageService {
             if (!dest.exists()) {
                 dest.mkdirs();
             }
+
             // 采用transferTo
             file.transferTo(targetLocation.toFile());
+
             // Files.copy(file.getInputStream(), targetLocation, StandardCopyOption.REPLACE_EXISTING);
         } catch (IOException e) {
             e.printStackTrace();
