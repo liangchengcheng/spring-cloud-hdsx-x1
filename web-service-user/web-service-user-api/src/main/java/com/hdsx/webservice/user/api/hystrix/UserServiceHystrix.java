@@ -15,7 +15,7 @@ import org.springframework.stereotype.Component;
  * 推荐定义具体错误信息
  */
 @Component
-public class UserServiceServiceHystrix implements UserServiceApi {
+public class UserServiceHystrix implements UserServiceApi {
 
     @Override
     public Result userLogin(UserBean userBean) {

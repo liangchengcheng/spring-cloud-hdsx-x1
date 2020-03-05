@@ -1,11 +1,11 @@
 package com.hdsx.webservice.redis.api.hystrix;
 
-import com.hdsx.webservice.redis.api.RedisApi;
+import com.hdsx.webservice.redis.api.RedisServiceApi;
 import com.hdsx.webservice.redis.bean.Redis;
 import org.springframework.stereotype.Component;
 
 @Component
-public class RedisServiceHystrix implements RedisApi {
+public class RedisServiceHystrix implements RedisServiceApi {
 
     @Override
     public String get(String key) {

@@ -3,7 +3,7 @@ package com.hdsx.webservice.order.api.hystrix;
 import com.hdsx.webservice.common.config.bean.Result;
 import com.hdsx.webservice.common.config.bean.ResultCode;
 import com.hdsx.webservice.common.config.bean.ResultUtil;
-import com.hdsx.webservice.order.api.OrderServicetApi;
+import com.hdsx.webservice.order.api.OrderServiceApi;
 import com.hdsx.webservice.order.bean.order.OrderBean;
 import com.hdsx.webservice.order.bean.order.OrderQueryBean;
 import org.springframework.stereotype.Component;
@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  * 推荐定义具体错误信息
  */
 @Component
-public class OrderServiceServiceHystrix implements OrderServicetApi {
+public class OrderServiceServiceHystrix implements OrderServiceApi {
 
     @Override
     public Result getOrderList(OrderQueryBean orderQueryBean) {

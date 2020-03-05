@@ -1,9 +1,9 @@
 server:
-  port: 11200
+  port: 40001
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:11900/eureka/
+      defaultZone: http://127.0.0.1:40000/eureka/
 feign:
   hystrix:
     enabled: true
@@ -22,10 +22,10 @@ spring:
   application:
     name: web-service-user-server #给你的微服务应用起一名字
   datasource:
-    url: jdbc:postgresql://192.168.0.181:5432/hdsx?charSet=utf-8
+    url: jdbc:mysql://192.168.0.181:5432/hdsx?charSet=utf-8
     username: watersys
     password: watersys
-    driver-class-name: org.postgresql.Driver
+    driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       filters: stat,logging
@@ -48,7 +48,6 @@ management:
 
 mybatis:
   mapperLocations: classpath:/mapper/*.xml
-  typeAliasesPackage: com.hdsx.drinkwater.vo
   config-location: classpath:mybatis-config.xml
 
 debug: true

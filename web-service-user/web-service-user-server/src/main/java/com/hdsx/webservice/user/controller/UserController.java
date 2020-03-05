@@ -4,6 +4,7 @@ import com.hdsx.webservice.common.config.bean.Result;
 import com.hdsx.webservice.common.config.bean.ResultCode;
 import com.hdsx.webservice.common.config.bean.ResultUtil;
 import com.hdsx.webservice.user.bean.UserBean;
+import com.hdsx.webservice.user.bean.UserQueryBean;
 import com.hdsx.webservice.user.service.UserClientService;
 import com.hdsx.webservice.user.service.UserManagerService;
 import io.swagger.annotations.ApiImplicitParam;
@@ -30,6 +31,17 @@ public class UserController {
 
     @Resource
     UserClientService userClientService;
+
+    @ApiOperation(value = "用户登录", httpMethod = "POST", produces = "application/json", notes = "用户登录")
+    @RequestMapping(value = "/userLogin", method = RequestMethod.POST, produces = "application/json")
+    public Result userLogin(@RequestBody UserBean userBean) {
+        try {
+            return userClientService.userLogin(userBean);
+        } catch (Exception e) {
+            log.error("系统异常:{}", e.getMessage(), e);
+            return ResultUtil.error(ResultCode.LOGIN_FAIL);
+        }
+    }
 
     @ApiOperation(value = "新增用户信息", httpMethod = "POST", produces = "application/json", notes = "新增用户信息")
     @RequestMapping(value = "/addUser", method = RequestMethod.POST, produces = "application/json")
@@ -65,14 +77,15 @@ public class UserController {
         }
     }
 
-    @ApiOperation(value = "用户登录", httpMethod = "POST", produces = "application/json", notes = "用户登录")
-    @RequestMapping(value = "/userLogin", method = RequestMethod.POST, produces = "application/json")
-    public Result userLogin(@RequestBody UserBean userBean) {
+    @ApiOperation(value = "获取用户列表", httpMethod = "POST", produces = "application/json", notes = "获取用户列表")
+    @RequestMapping(value = "/getUserList", method = RequestMethod.POST, produces = "application/json")
+    public Result getUserList(@RequestBody UserQueryBean userQueryBean) {
         try {
-            return userClientService.userLogin(userBean);
+            return userManagerService.getUserList(userQueryBean);
         } catch (Exception e) {
-            log.error("系统异常:{}", e.getMessage(), e);
-            return ResultUtil.error(ResultCode.LOGIN_FAIL);
+            log.error("获取用户列表系统异常:{}", e.getMessage(), e);
+            return ResultUtil.error(ResultCode.ADD_FAIL);
         }
     }
+
 }

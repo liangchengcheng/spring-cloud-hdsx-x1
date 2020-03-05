@@ -139,8 +139,12 @@
 
         <dependency>
             <groupId>com.hdsx.webservice</groupId>
-            <artifactId>web-service-product-api</artifactId>
+            <artifactId>web-service-order-api</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
         </dependency>
     </dependencies>
 

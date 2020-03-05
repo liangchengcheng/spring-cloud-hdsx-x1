@@ -131,7 +131,7 @@ public class UserManagerServiceImpl implements UserManagerService {
                 map.put("total", total);
             }
 
-            return ResultUtil.success(ResultCode.QUERY_SUCCESS, userList);
+            return ResultUtil.success(ResultCode.QUERY_SUCCESS, map);
         } catch (Exception e) {
             e.printStackTrace();
         }

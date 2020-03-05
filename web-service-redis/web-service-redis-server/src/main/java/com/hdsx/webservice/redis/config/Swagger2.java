@@ -1,4 +1,4 @@
-package com.hdsx.webservice.user;
+package com.hdsx.webservice.redis.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,30 +22,24 @@ public class Swagger2 {
 
     @Bean
     public Docket buildDocket() {
-
+        // 增加header中的token
         ParameterBuilder tokenPar = new ParameterBuilder();
         List<Parameter> pars = new ArrayList<>();
-        tokenPar.name("token").description("token")
-                .modelRef(new ModelRef("string"))
-                .parameterType("header")
-                .required(true)
-                .build();
-
+        tokenPar.name("token").description("token").modelRef(new ModelRef("string")).parameterType("header").required(true).build();
         pars.add(tokenPar.build());
-
+        // 增加header中的token
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(ApiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.hdsx.webservice.user.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.hdsx.webservice.redis.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .globalOperationParameters(pars);
     }
-
     private ApiInfo ApiInfo() {
         return new ApiInfoBuilder()
-                .description("WEB 微服务-用户体系")
-                .title("微服务-用户体系")
+                .description("web端redis服务")
+                .title("redis服务")
                 .version("2.0")
                 .build();
     }

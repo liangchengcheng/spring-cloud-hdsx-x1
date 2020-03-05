@@ -1,6 +1,6 @@
 package com.hdsx.webservice.gateway.filter;
 
-import com.hdsx.webservice.redis.api.RedisApi;
+import com.hdsx.webservice.redis.api.RedisServiceApi;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
@@ -24,7 +24,7 @@ import java.util.List;
 public class AccessGatewayFilter implements GlobalFilter {
 
     @Autowired
-    private RedisApi redisApi;
+    private RedisServiceApi redisServiceApi;
 
     @Override
     public Mono<Void> filter(ServerWebExchange serverWebExchange, GatewayFilterChain gatewayFilterChain) {
@@ -53,7 +53,7 @@ public class AccessGatewayFilter implements GlobalFilter {
             response.setStatusCode(HttpStatus.UNAUTHORIZED);
             return response.setComplete();
         } else {
-            boolean authsuccess = redisApi.exists("web:" + authToken);
+            boolean authsuccess = redisServiceApi.exists("web:" + authToken);
             if (!authsuccess) {
                 log.error("token", "登录认证失效");
                 response.setStatusCode(HttpStatus.UNAUTHORIZED);

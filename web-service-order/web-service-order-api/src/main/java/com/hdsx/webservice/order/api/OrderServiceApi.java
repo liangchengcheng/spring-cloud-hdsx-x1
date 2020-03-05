@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @FeignClient(value = "web-service-order-server",path = "/order",fallback = OrderServiceServiceHystrix.class)
-public interface OrderServicetApi {
+public interface OrderServiceApi {
 
     /**
      * 获取订单列表

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * Redis FeignClient
  */
 @FeignClient(value = "web-service-redis-server", path = "redis", fallback = RedisServiceHystrix.class)
-public interface RedisApi {
+public interface RedisServiceApi {
 
     @ApiOperation("获取redis中存储的值")
     @RequestMapping(value = "/get", method = RequestMethod.GET)
@@ -21,6 +21,10 @@ public interface RedisApi {
     @ApiOperation("添加数据保存到redis中")
     @RequestMapping(value = "/add", method = RequestMethod.POST)
     Boolean add(@RequestBody Redis redis);
+
+    @ApiOperation("删除缓存")
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    Boolean delete(@RequestParam("key") String key);
 
     @ApiOperation("到时自动销毁redis中存储的数据")
     @RequestMapping(value = "/expire", method = RequestMethod.GET)
@@ -34,7 +38,4 @@ public interface RedisApi {
     @RequestMapping(value = "/addForExpireTime", method = RequestMethod.POST)
     Boolean addForExpireTime(@RequestBody Redis redis);
 
-    @ApiOperation("删除缓存")
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
-    Boolean delete(@RequestParam("key") String key);
 }
