@@ -1,4 +1,4 @@
-package com.hdsx.webservice;
+package com.hdsx.webservice.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

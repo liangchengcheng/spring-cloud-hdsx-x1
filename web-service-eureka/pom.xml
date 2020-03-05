@@ -60,7 +60,7 @@
                             <addClasspath>true</addClasspath>
                             <useUniqueVersions>false</useUniqueVersions>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>com.hdsx.webservice.EurekaServiceApplication</mainClass>
+                            <mainClass>com.hdsx.webservice.eureka.EurekaServiceApplication</mainClass>
                         </manifest>
                         <manifestEntries>
                             <version>${project.version}</version>

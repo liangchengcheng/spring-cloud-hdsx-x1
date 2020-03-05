@@ -3,7 +3,7 @@ spring:
     name: web-service-eureka #给你的微服务应用起一名字
 
 server:
-  port: 30001
+  port: 40000
 eureka:
   instance:
     hostname: localhost
