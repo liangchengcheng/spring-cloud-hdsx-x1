@@ -8,6 +8,7 @@ import com.hdsx.webservice.multimedia.bean.image.AddRequestImageBean;
 import com.hdsx.webservice.multimedia.bean.image.ImageBean;
 import com.hdsx.webservice.product.bean.ProductBean;
 import com.hdsx.webservice.product.bean.ProductInfoBean;
+import com.hdsx.webservice.product.bean.ProductNumBean;
 import com.hdsx.webservice.product.dao.ProductMapper;
 import com.hdsx.webservice.product.service.ProductService;
 import lombok.extern.slf4j.Slf4j;
@@ -83,6 +84,24 @@ public class ProductServiceImpl implements ProductService {
         }
 
         return ResultUtil.error(ResultCode.QUERY_FAIL);
+    }
+
+    @Override
+    public Result UpdateProductNumBean(ProductNumBean productNumBean) {
+        try {
+            if (productNumBean == null) {
+                return ResultUtil.success(ResultCode.UPDATE_SUCCESS ,null);
+            }
+
+            int flag = productMapper.updateProductNumBean(productNumBean);
+            if (flag == 1) {
+                return ResultUtil.success(ResultCode.UPDATE_SUCCESS);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return ResultUtil.error(ResultCode.UPDATE_FAIL);
     }
 }
 

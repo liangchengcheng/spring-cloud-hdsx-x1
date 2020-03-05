@@ -29,6 +29,4 @@ public interface ProductServiceApi {
     @RequestMapping(value = "/UpdateProductNumBean", method = RequestMethod.POST)
     Result UpdateProductNumBean(@RequestBody ProductNumBean productNumBean);
 
-
-
 }

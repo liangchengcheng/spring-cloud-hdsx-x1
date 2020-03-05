@@ -4,6 +4,7 @@ import com.hdsx.webservice.common.config.bean.Result;
 import com.hdsx.webservice.common.config.bean.ResultCode;
 import com.hdsx.webservice.common.config.bean.ResultUtil;
 import com.hdsx.webservice.product.bean.ProductInfoBean;
+import com.hdsx.webservice.product.bean.ProductNumBean;
 import com.hdsx.webservice.product.service.ProductService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
@@ -18,7 +19,7 @@ import org.springframework.web.bind.annotation.*;
  * 商品信息对外接口
  */
 @RestController
-@RequestMapping("/prodcutservice")
+@RequestMapping("/product")
 @Slf4j
 @Api(value = "商品信息对外接口服务", description = "商品信息对外接口服务")
 public class ProductController {
@@ -46,6 +47,17 @@ public class ProductController {
         } catch (Exception e){
             log.error("服务器异常{}",e.getMessage(),e);
             return ResultUtil.error(ResultCode.QUERY_FAIL);
+        }
+    }
+
+    @ApiOperation(value = "减少商品库存", httpMethod = "POST", produces = "application/json", notes = "减少商品库存")
+    @RequestMapping(value = "/UpdateProductNumBean", method = RequestMethod.POST)
+    public Result UpdateProductNumBean(@RequestBody ProductNumBean productNumBean) {
+        try {
+            return productService.UpdateProductNumBean(productNumBean);
+        } catch (Exception e) {
+            log.error("系统异常:{}", e.getMessage(), e);
+            return ResultUtil.error(ResultCode.UPDATE_FAIL);
         }
     }
 

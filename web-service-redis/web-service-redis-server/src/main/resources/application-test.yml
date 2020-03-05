@@ -1,9 +1,9 @@
 server:
-  port: 11600
+  port: 40002
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:11900/eureka/
+      defaultZone: http://127.0.0.1:40000/eureka/
 feign:
   hystrix:
     enabled: true

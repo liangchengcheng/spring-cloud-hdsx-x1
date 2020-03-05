@@ -40,8 +40,8 @@ public class Swagger2 {
     }
     private ApiInfo ApiInfo() {
         return new ApiInfoBuilder()
-                .description("水源地web端督查信息修改服务")
-                .title("水源地督查信息修改")
+                .description("商品信息微服务")
+                .title("商品信息微服务")
                 .version("2.0")
                 .build();
     }
