@@ -16,7 +16,7 @@
     </insert>
 
     <update id="editUser" parameterType="com.hdsx.webservice.user.bean.UserBean">
-        UPDATE tb_user
+        UPDATE tb_user SET
          username = #{username},
          password = #{password},
          phone = #{phone},
@@ -74,7 +74,7 @@
         </if>
     </select>
     <update id="changePassWord" parameterType="com.hdsx.webservice.user.bean.ChangePassWordBean">
-        UPDATE tb_user
+        UPDATE tb_user SET
         password = #{password}
         WHERE id = #{id}
     </update>

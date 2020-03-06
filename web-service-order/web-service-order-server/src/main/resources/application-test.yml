@@ -1,5 +1,5 @@
 server:
-  port: 40005
+  port: 40004
 eureka:
   client:
     serviceUrl:
@@ -16,16 +16,16 @@ hystrix:
           thread:
             timeoutInMilliseconds: 10000
 # swagger2
-swagger2.package: com.hdsx.webservice.multimedia.controller
+swagger2.package: com.hdsx.webservice.order.controller
 
 spring:
   application:
-    name: web-service-media-server #给你的微服务应用起一名字
+    name: web-service-order-server #给你的微服务应用起一名字
   datasource:
-    url: jdbc:mysql://127.0.0.1:5432/hdsx?charSet=utf-8
+    url: jdbc:postgresql://127.0.0.1:5432/hdsx?charSet=utf-8
     username: watersys
     password: watersys
-    driver-class-name: com.mysql.jdbc.Driver
+    driver-class-name: org.postgresql.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       filters: stat,logging
@@ -41,11 +41,6 @@ spring:
       test-while-idle:  true
       test-on-borrow: false
       test-on-return: false
-  servlet:
-    multipart:
-      max-file-size: 50MB
-      max-request-size: 200MB
-      enabled: true
 management:
   security:
     basic:
@@ -53,20 +48,9 @@ management:
 
 mybatis:
   mapperLocations: classpath:/mapper/*.xml
-  typeAliasesPackage: com.hdsx.drinkwater.vo
   config-location: classpath:mybatis-config.xml
 
 debug: true
-
-drinkwater:
-  imagePath: /Users/pengyi/Desktop/watersys/image
-  filePath:  /Users/pengyi/Desktop/watersys/file
-  videoPath: /Users/pengyi/Desktop/watersys/video
-  serverl: http://localhost:10004/watersys
-  imageShowPath: /image/
-  fileShowPath:  /file/
-  videoShowPath: /video/
-  fileDownloadPath: E:\nginx-1.9.5\webapp\watersys
 
 ribbon:
   ReadTimeout: 180000
