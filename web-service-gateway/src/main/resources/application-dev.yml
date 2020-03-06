@@ -14,11 +14,18 @@ spring:
           uri: lb://web-service-user
         - id: web-service-product
           predicates:
-          - Path=/hdsx/product/**
+            - Path=/hdsx/product/**
           filters:
             - StripPrefix=2
             - SwaggerHeaderFilter
           uri: lb://web-service-product
+        - id: web-service-order
+          predicates:
+            - Path=/hdsx/order/**
+          filters:
+            - StripPrefix=2
+            - SwaggerHeaderFilter
+          uri: lb://web-service-order
         - id: web-service-media
           predicates:
             - Path=/hdsx/media/**
@@ -34,13 +41,13 @@ spring:
             - SwaggerHeaderFilter
           uri: lb://web-service-redis
   application:
-    name: drink-water-gateway #给你的微服务应用起一名字
+    name: web-service-gateway #给你的微服务应用起一名字
 server:
-  port: 10100
+  port: 40010
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:11900/eureka/
+      defaultZone: http://127.0.0.1:40000/eureka/
 logging:
   level:
     org.springframework.cloud.gateway: debug

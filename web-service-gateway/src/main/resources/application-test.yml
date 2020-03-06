@@ -113,11 +113,11 @@ spring:
   application:
     name: drink-water-gateway #给你的微服务应用起一名字
 server:
-  port: 10100
+  port: 40010
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://127.0.0.1:11900/eureka/
+      defaultZone: http://127.0.0.1:40000/eureka/
 logging:
   level:
     org.springframework.cloud.gateway: debug
