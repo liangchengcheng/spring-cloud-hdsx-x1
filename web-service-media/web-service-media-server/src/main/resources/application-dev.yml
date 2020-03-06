@@ -22,9 +22,9 @@ spring:
   application:
     name: web-service-media-server #给你的微服务应用起一名字
   datasource:
-    url: jdbc:postgresql://192.168.0.181:5432/hdsx?charSet=utf-8
-    username: watersys
-    password: watersys
+    url: jdbc:postgresql://127.0.0.1:3306/hdsx?charSet=utf-8
+    username: root
+    password: 123
     driver-class-name: org.postgresql.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -63,7 +63,7 @@ drinkwater:
   imagePath: E:\nginx-1.9.5\webapp\watersys\image
   filePath: E:\nginx-1.9.5\webapp\watersys\file
   videoPath: E:\nginx-1.9.5\webapp\watersys\video
-  serverl: http://192.168.0.181:10004/watersys
+  serverl: http://127.0.0.1:10004/watersys
   imageShowPath: /image/
   fileShowPath:  /file/
   videoShowPath: /video/

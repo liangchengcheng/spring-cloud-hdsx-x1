@@ -22,10 +22,10 @@ spring:
   application:
     name: web-service-order-server #给你的微服务应用起一名字
   datasource:
-    url: jdbc:postgresql://127.0.0.1:5432/hdsx?charSet=utf-8
-    username: watersys
-    password: watersys
-    driver-class-name: org.postgresql.Driver
+    url: jdbc:mysql://127.0.0.1:5432/hdsx?charSet=utf-8
+    username: root
+    password: 123
+    driver-class-name:  com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
       filters: stat,logging

@@ -20,7 +20,7 @@
 | `product-service` | 商品 HTTP 服务 | HTTP （见配置） | |
 | `order-service` | 订单 HTTP 服务 | HTTP （见配置） | |
 | `eureka-service` | 订单 HTTP 服务 | HTTP （40000） | |
-| `getway-service` | 订单 HTTP 服务 | HTTP （见配置） | |
+| `getway-service` | 订单 HTTP 服务 | HTTP （40010） | |
 | `redis-service` | 缓存 HTTP 服务 | HTTP （见配置） | |
 | `media-service` | 图片 HTTP 服务 | HTTP （见配置） | |
 

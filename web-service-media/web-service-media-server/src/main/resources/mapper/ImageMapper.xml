@@ -26,10 +26,10 @@
         insert into tb_image
             (id, type, mapperid, createtime, imagename, imageurl)
         values (
-                   regexp_replace('' || uuid_generate_v4(), '-', '', 'g'),
+                   #{id},
                    #{type},
                    #{mapperid},
-                   now(),
+                   NOW(),
                    #{imagename},
                    #{imageurl}
                )
@@ -41,10 +41,10 @@
             insert into tb_image
             (id, type, mapperid, createtime, imagename, imageurl)
             values (
-            regexp_replace('' || uuid_generate_v4(), '-', '', 'g'),
+            #{id},
             #{item.type},
             #{item.mapperid},
-            now(),
+            NOW(),
             #{item.imagename},
             #{item.imageurl}
             )
