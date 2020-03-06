@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.hdsx.webservice.order.dao.OrderMapper">
 
-    <resultMap id="orderBeanMap" type="com.hdsx.appservice.bean.order.OrderBean">
+    <resultMap id="orderBeanMap" type="com.hdsx.webservice.order.bean.order.OrderBean">
         <id column="id" property="id"/>
     </resultMap>
 

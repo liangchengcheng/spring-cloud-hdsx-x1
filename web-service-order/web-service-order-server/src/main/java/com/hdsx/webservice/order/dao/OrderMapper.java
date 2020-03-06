@@ -3,7 +3,6 @@ package com.hdsx.webservice.order.dao;
 import com.hdsx.webservice.order.bean.order.OrderBean;
 import com.hdsx.webservice.order.bean.order.OrderQueryBean;
 import org.apache.ibatis.annotations.Mapper;
-import org.springframework.stereotype.Repository;
 import java.util.List;
 
 /**

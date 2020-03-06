@@ -33,15 +33,15 @@ public class Swagger2 {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(ApiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.hdsx.webservice.product.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.hdsx.webservice.order.controller"))
                 .paths(PathSelectors.any())
                 .build()
                 .globalOperationParameters(pars);//增加header中的token
     }
     private ApiInfo ApiInfo() {
         return new ApiInfoBuilder()
-                .description("水源地web端督查信息修改服务")
-                .title("水源地督查信息修改")
+                .description("订单微服务")
+                .title("订单微服务")
                 .version("2.0")
                 .build();
     }
