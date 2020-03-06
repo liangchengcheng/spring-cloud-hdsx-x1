@@ -4,7 +4,7 @@
 
 基于微服务的思想，构建在 B2C 电商场景下的项目实战。
 
-* 整体的功能:(用户系统)（订单服务 --> 商品服务）
+* 整体的功能:(用户系统)（订单服务 --> 商品服务）（基础微服务：多媒体+redis缓存）
 
 * 整体的功能如下图：![功能图](https://github.com/liangchengcheng/spring-cloud-hdsx-x1/blob/master/image/%E5%BD%AD%E6%AF%85%E7%89%88%E6%9C%AC%E6%B0%B4%E6%BA%90%E5%9C%B0%E8%84%9A%E6%89%8B%E6%9E%B6.png)
 
@@ -19,10 +19,10 @@
 | `user-service` | 用户 HTTP 服务 | HTTP （见配置） | |
 | `product-service` | 商品 HTTP 服务 | HTTP （见配置） | |
 | `order-service` | 订单 HTTP 服务 | HTTP （见配置） | |
-| `eureka-service` | 订单 HTTP 服务 | HTTP （30000） | |
-| `getway-service` | 订单 HTTP 服务 | HTTP （8000） | |
-| `redis-service` | 缓存 HTTP 服务 | HTTP （8000） | |
-| `media-service` | 图片 HTTP 服务 | HTTP （8000） | |
+| `eureka-service` | 订单 HTTP 服务 | HTTP （40000） | |
+| `getway-service` | 订单 HTTP 服务 | HTTP （见配置） | |
+| `redis-service` | 缓存 HTTP 服务 | HTTP （见配置） | |
+| `media-service` | 图片 HTTP 服务 | HTTP （见配置） | |
 
 -------
 
