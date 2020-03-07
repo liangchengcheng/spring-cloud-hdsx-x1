@@ -71,14 +71,14 @@ public class ProductServiceImpl implements ProductService {
         try {
             ProductBean product = productMapper.getProductById(id);
             if (product == null) {
-                return ResultUtil.success(ResultCode.UPDATE_SUCCESS ,null);
+                return ResultUtil.success(ResultCode.QUERY_FAIL ,null);
             }
 
             ProductInfoBean productInfoBean = new ProductInfoBean();
             List<ImageBean> imageBeanByMapperId = imageApi.getImageBeanByMapperId(id);
             productInfoBean.setProductBean(product);
             productInfoBean.setImageBeans(imageBeanByMapperId);
-            return ResultUtil.success(ResultCode.UPDATE_SUCCESS ,productInfoBean);
+            return ResultUtil.success(ResultCode.QUERY_SUCCESS ,productInfoBean);
         } catch (Exception e) {
             e.printStackTrace();
         }

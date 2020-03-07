@@ -32,34 +32,34 @@ public class AccessGatewayFilter implements GlobalFilter {
         ServerHttpRequest.Builder mutate = request.mutate();
         String requestUri = request.getPath().pathWithinApplication().value();
         ServerHttpRequest build = mutate.build();
-        // 不进行拦截的地址
-        if (requestUri.contains("/v2/api-docs")
-                || requestUri.contains("/userApi/login")
-                || requestUri.contains("/redis")
-                || requestUri.contains("/userApi/getVerificationCode")
-                || requestUri.contains("/userApi/modifyUserPwdByMessage")) {
-            return gatewayFilterChain.filter(serverWebExchange.mutate().request(build).build());
-        }
-
-        List<String> strings = request.getHeaders().get("token");
-        String authToken = null;
-        if (strings != null) {
-            authToken = strings.get(0);
-        }
-
-        ServerHttpResponse response = serverWebExchange.getResponse();
-        if (authToken == null || "".equals(authToken)) {
-            log.error("token", "登录认证失效");
-            response.setStatusCode(HttpStatus.UNAUTHORIZED);
-            return response.setComplete();
-        } else {
-            boolean authsuccess = redisServiceApi.exists("web:" + authToken);
-            if (!authsuccess) {
-                log.error("token", "登录认证失效");
-                response.setStatusCode(HttpStatus.UNAUTHORIZED);
-                return response.setComplete();
-            }
-        }
+//        // 不进行拦截的地址
+//        if (requestUri.contains("/v2/api-docs")
+//                || requestUri.contains("/userApi/login")
+//                || requestUri.contains("/redis")
+//                || requestUri.contains("/userApi/getVerificationCode")
+//                || requestUri.contains("/userApi/modifyUserPwdByMessage")) {
+//            return gatewayFilterChain.filter(serverWebExchange.mutate().request(build).build());
+//        }
+//
+//        List<String> strings = request.getHeaders().get("token");
+//        String authToken = null;
+//        if (strings != null) {
+//            authToken = strings.get(0);
+//        }
+//
+//        ServerHttpResponse response = serverWebExchange.getResponse();
+//        if (authToken == null || "".equals(authToken)) {
+//            log.error("token", "登录认证失效");
+//            response.setStatusCode(HttpStatus.UNAUTHORIZED);
+//            return response.setComplete();
+//        } else {
+//            boolean authsuccess = redisServiceApi.exists("web:" + authToken);
+//            if (!authsuccess) {
+//                log.error("token", "登录认证失效");
+//                response.setStatusCode(HttpStatus.UNAUTHORIZED);
+//                return response.setComplete();
+//            }
+//        }
 
         return gatewayFilterChain.filter(serverWebExchange.mutate().request(build).build());
     }
